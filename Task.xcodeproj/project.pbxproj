@@ -14,6 +14,7 @@
 		40918EDA1CEE576F00F00CA6 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918ED81CEE576F00F00CA6 /* Task+CoreDataProperties.swift */; };
 		40918EDB1CEE576F00F00CA6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918ED91CEE576F00F00CA6 /* Task.swift */; };
 		40918EDD1CEE58D400F00CA6 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918EDC1CEE58D400F00CA6 /* TaskController.swift */; };
+		40918EE21CEE774200F00CA6 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918EE11CEE774200F00CA6 /* DateHelpers.swift */; };
 		68D78A261BD6C26500509A87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D78A251BD6C26500509A87 /* AppDelegate.swift */; };
 		68D78A2B1BD6C26500509A87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D78A291BD6C26500509A87 /* Main.storyboard */; };
 		68D78A2D1BD6C26500509A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D78A2C1BD6C26500509A87 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		40918ED81CEE576F00F00CA6 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		40918ED91CEE576F00F00CA6 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		40918EDC1CEE58D400F00CA6 /* TaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		40918EE11CEE774200F00CA6 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		68D78A221BD6C26500509A87 /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D78A251BD6C26500509A87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68D78A2A1BD6C26500509A87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				68D78A251BD6C26500509A87 /* AppDelegate.swift */,
+				40918EE11CEE774200F00CA6 /* DateHelpers.swift */,
 				40918ECF1CEE55DF00F00CA6 /* Stack.swift */,
 				68D78A291BD6C26500509A87 /* Main.storyboard */,
 				40918EDF1CEE58EE00F00CA6 /* Model Objects */,
@@ -305,6 +308,7 @@
 				40918EDA1CEE576F00F00CA6 /* Task+CoreDataProperties.swift in Sources */,
 				40918ECE1CEE518500F00CA6 /* TaskDetailTableViewController.swift in Sources */,
 				40918ED31CEE561E00F00CA6 /* Model.xcdatamodeld in Sources */,
+				40918EE21CEE774200F00CA6 /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

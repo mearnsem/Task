@@ -15,10 +15,17 @@ class TaskDetailTableViewController: UITableViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var dueDateTextField: UITextField!
     @IBOutlet var notesTextView: UITextView!
+    @IBOutlet var dueDatePicker: UIDatePicker!
+    
     var task: Task?
+    var dueDateValue: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dueDateTextField.inputView = dueDatePicker
+        if let task = task {
+            updateWithTask(task)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,12 +39,24 @@ class TaskDetailTableViewController: UITableViewController {
         
     }
     
+    @IBAction func datePickerValueChanged(sender: UIDatePicker) {
+        dueDatePicker.date = dueDateValue!
+    }
+    
+    @IBAction func userTappedView(sender: AnyObject) {
+        nameTextField.resignFirstResponder()
+        dueDateTextField.resignFirstResponder()
+        notesTextView.resignFirstResponder()
+        dueDatePicker.resignFirstResponder()
+    }
+    
     //MARK: - Functions
     
     func updateWithTask(task: Task) {
         self.task = task
         
         self.nameTextField.text = task.name
+        self.dueDateTextField.text = task.due?.stringValue()
         self.notesTextView.text = task.notes
     }
     
