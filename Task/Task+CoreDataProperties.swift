@@ -18,10 +18,5 @@ extension Task {
     @NSManaged var notes: String?
     @NSManaged var due: NSDate?
     @NSManaged var isComplete: NSNumber
-    
-    convenience init(name: String, notes: String? = nil, due: NSDate? = nil, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
-        let entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: context)!
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
 
 }
