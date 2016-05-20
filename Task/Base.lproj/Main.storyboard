@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5WU-Ww-nvq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -14,14 +15,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="vdE-MF-Ttt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="vdE-MF-Ttt" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdE-MF-Ttt" id="oQt-vo-iC9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sww-G1-BTw">
+                                            <rect key="frame" x="567" y="9" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Sww-G1-BTw" secondAttribute="height" multiplier="1:1" id="oXW-pN-hyU"/>
+                                            </constraints>
+                                            <state key="normal" image="incomplete"/>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="vdE-MF-Ttt" eventType="touchUpInside" id="XJP-f6-75b"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jis-KL-WoE">
+                                            <rect key="frame" x="8" y="11" width="150" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="B4K-tb-MZG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Sww-G1-BTw" secondAttribute="trailing" id="SJZ-fJ-O6D"/>
+                                        <constraint firstItem="Sww-G1-BTw" firstAttribute="top" secondItem="oQt-vo-iC9" secondAttribute="topMargin" constant="1" id="Z2v-Y8-YBQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Sww-G1-BTw" secondAttribute="bottom" constant="1" id="q6P-0M-wEd"/>
+                                        <constraint firstItem="Jis-KL-WoE" firstAttribute="top" secondItem="oQt-vo-iC9" secondAttribute="topMargin" constant="3" id="uWw-VP-HPU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Jis-KL-WoE" secondAttribute="bottom" constant="3" id="uk6-LM-oXJ"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Jis-KL-WoE" secondAttribute="leading" id="zch-P1-iCX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="button" destination="Sww-G1-BTw" id="tHl-1K-4qI"/>
+                                    <outlet property="primaryLabel" destination="Jis-KL-WoE" id="SPE-ph-SkR"/>
                                     <segue destination="hjO-JJ-HKb" kind="show" identifier="toViewTask" id="d9P-fc-We5"/>
                                 </connections>
                             </tableViewCell>
@@ -188,7 +220,10 @@
             <point key="canvasLocation" x="561" y="358"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="incomplete" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cHl-go-IgF"/>
+        <segue reference="d9P-fc-We5"/>
     </inferredMetricsTieBreakers>
 </document>
