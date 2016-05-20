@@ -14,7 +14,7 @@ protocol ButtonTableViewCellDelegate {
 
 class ButtonTableViewCell: UITableViewCell {
 
-    var task: Task?
+    
     var delegate: ButtonTableViewCellDelegate?
     
     // MARK: - IBOutlets & Properties
@@ -25,7 +25,9 @@ class ButtonTableViewCell: UITableViewCell {
     // MARK: - IBActions
 
     @IBAction func buttonTapped(sender: AnyObject) {
-        delegate?.buttonCellButtonTapped(self)
+        if let delegate = delegate {
+            delegate.buttonCellButtonTapped(self)
+        }
     }
     
     // MARK: - Functions 
@@ -40,8 +42,6 @@ class ButtonTableViewCell: UITableViewCell {
 
 extension ButtonTableViewCell {
     func updateWithTask(task: Task) {
-        self.task = task
-        
         self.primaryLabel.text = task.name
         updateButton(task.isComplete.boolValue)
     }

@@ -15,6 +15,11 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
 
     // MARK: - Functions
     
@@ -24,8 +29,7 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
         }
         let task = TaskController.sharedController.tasks[indexPath.row]
         sender.updateWithTask(task)
-        
-        //toggle task.isComplete
+        sender.updateButton(true)
         TaskController.sharedController.saveToPersistentStore()
         tableView.reloadData()
     }

@@ -15,14 +15,7 @@ class TaskController {
     var tasks: [Task] = []
     
     init() {
-//        self.tasks = fetchTasks()
     }
-    
-//    var mockTasks: [Task] {
-//        let task1 = Task(name: "Clean kitchen", isComplete: true)
-//        let task2 = Task(name: "Code hw", notes: "Task project", due: NSDate(), isComplete: false)
-//        return [task1, task2]
-//    }
     
     var completedTasks: [Task] {
         let request = NSFetchRequest.init(entityName: "Task")
@@ -53,7 +46,10 @@ class TaskController {
     }
     
     func updateTask(task: Task, name: String, notes: String?, due: NSDate?, isComplete: Bool) {
-        
+        task.notes = notes
+        task.name = name
+        task.due = due
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {
