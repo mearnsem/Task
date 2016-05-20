@@ -15,14 +15,14 @@ class TaskController {
     var tasks: [Task] = []
     
     init() {
-        self.tasks = fetchTasks()
+//        self.tasks = fetchTasks()
     }
     
-    var mockTasks: [Task] {
-        let task1 = Task(name: "Clean kitchen", isComplete: true)
-        let task2 = Task(name: "Code hw", notes: "Task project", due: NSDate(), isComplete: false)
-        return [task1, task2]
-    }
+//    var mockTasks: [Task] {
+//        let task1 = Task(name: "Clean kitchen", isComplete: true)
+//        let task2 = Task(name: "Code hw", notes: "Task project", due: NSDate(), isComplete: false)
+//        return [task1, task2]
+//    }
     
     var completedTasks: [Task] {
         let request = NSFetchRequest.init(entityName: "Task")
@@ -41,11 +41,15 @@ class TaskController {
     }
     
     func addtask(name: String, notes: String?, due: NSDate?) {
-        
+        _ = Task(name: name, isComplete: false)
+        saveToPersistentStore()
     }
     
     func removeTask(task: Task) {
-        
+        if let moc = task.managedObjectContext {
+            moc.deleteObject(task)
+            saveToPersistentStore()
+        }
     }
     
     func updateTask(task: Task, name: String, notes: String?, due: NSDate?, isComplete: Bool) {
@@ -53,11 +57,18 @@ class TaskController {
     }
     
     func saveToPersistentStore() {
-        
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            try moc.save()
+        } catch {
+            print("Your task could not be saved.")
+        }
     }
     
     func fetchTasks() -> [Task] {
-        return mockTasks
+        let request = NSFetchRequest(entityName: "Task")
+        let moc = Stack.sharedStack.managedObjectContext
+        return (try? moc.executeFetchRequest(request)) as? [Task] ?? []
     }
 }
 

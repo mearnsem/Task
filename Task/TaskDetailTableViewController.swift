@@ -27,20 +27,16 @@ class TaskDetailTableViewController: UITableViewController {
             updateWithTask(task)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: - IBActions
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        
+        TaskController.sharedController.saveToPersistentStore()
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func datePickerValueChanged(sender: UIDatePicker) {
-        dueDatePicker.date = dueDateValue!
+        dueDatePicker.calendar = 
     }
     
     @IBAction func userTappedView(sender: AnyObject) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController {
+class TaskListTableViewController: UITableViewController, ButtonTableViewCellDelegate {
     
     // MARK: - Lifecycle
     
@@ -16,7 +16,19 @@ class TaskListTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-
+    // MARK: - Functions
+    
+    func buttonCellButtonTapped(sender: ButtonTableViewCell) {
+        guard let indexPath = tableView.indexPathForCell(sender) else {
+            return
+        }
+        let task = TaskController.sharedController.tasks[indexPath.row]
+        sender.updateWithTask(task)
+        
+        //toggle task.isComplete
+        TaskController.sharedController.saveToPersistentStore()
+        tableView.reloadData()
+    }
     
     // MARK: - Table view data source
 
@@ -25,10 +37,10 @@ class TaskListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as? ButtonTableViewCell ?? ButtonTableViewCell()
         let task = TaskController.sharedController.tasks[indexPath.row]
-        cell.textLabel?.text = task.name
+        cell.updateWithTask(task)
+        cell.delegate = self
         
         return cell
     }

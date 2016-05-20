@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol ButtonTableViewCellDelegate {
+    func buttonCellButtonTapped(sender: ButtonTableViewCell)
+}
+
 class ButtonTableViewCell: UITableViewCell {
 
     var task: Task?
+    var delegate: ButtonTableViewCellDelegate?
     
     // MARK: - IBOutlets & Properties
 
@@ -20,7 +25,7 @@ class ButtonTableViewCell: UITableViewCell {
     // MARK: - IBActions
 
     @IBAction func buttonTapped(sender: AnyObject) {
-        
+        delegate?.buttonCellButtonTapped(self)
     }
     
     // MARK: - Functions 
@@ -38,6 +43,6 @@ extension ButtonTableViewCell {
         self.task = task
         
         self.primaryLabel.text = task.name
-        //UPDATE IMAGE
+        updateButton(task.isComplete.boolValue)
     }
 }
