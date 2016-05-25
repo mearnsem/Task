@@ -16,7 +16,13 @@ class TaskController {
     var tasks: [Task] = []
     
     init() {
+        self.tasks = fetchTasks()
+    }
     
+    var mockTasks: [Task] {
+        let task1 = Task(name: "Grocery List", notes: "Bananas, Bread, Milk", due: NSDate(timeIntervalSinceNow: NSTimeInterval(60*60*24*8)))
+        let task2 = Task(name: "Homework", notes: nil, due: nil, isComplete: true)
+        return [task1!, task2!]
     }
     
     func addTask(name: String, notes: String?, due: NSDate?) {
@@ -36,31 +42,21 @@ class TaskController {
     }
     
     func fetchTasks() -> [Task] {
-        
+        return mockTasks
     }
     
     var completedTasks: [Task] {
         let moc = Stack.sharedStack.managedObjectContext
         let request = NSFetchRequest(entityName: "Task")
-        var tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
-        for task in tasks {
-            if task.isComplete == true {
-                tasks.append(task)
-            }
-        }
-        return tasks
+        let tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
+        return tasks.filter({$0.isComplete.boolValue})
     }
     
     var incompleteTasks: [Task] {
         let moc = Stack.sharedStack.managedObjectContext
         let request = NSFetchRequest(entityName: "Task")
-        var tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
-        for task in tasks {
-            if task.isComplete == false {
-                tasks.append(task)
-            }
-        }
-        return tasks
+        let tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
+        return tasks.filter({!$0.isComplete.boolValue})
     }
     
 }
