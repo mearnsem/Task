@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4011AC2B1CF63BEA00B3BCE8 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC2A1CF63BEA00B3BCE8 /* TaskListTableViewController.swift */; };
 		4011AC2D1CF63CA600B3BCE8 /* TaskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC2C1CF63CA600B3BCE8 /* TaskDetailTableViewController.swift */; };
 		4011AC2F1CF63CE300B3BCE8 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC2E1CF63CE300B3BCE8 /* Stack.swift */; };
 		4011AC321CF63CFE00B3BCE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC301CF63CFE00B3BCE8 /* Model.xcdatamodeld */; };
@@ -16,6 +15,7 @@
 		4011AC3A1CF6403600B3BCE8 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC391CF6403600B3BCE8 /* TaskController.swift */; };
 		4011AC3D1CF64FA400B3BCE8 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC3C1CF64FA400B3BCE8 /* DateHelpers.swift */; };
 		4011AC3F1CF65A4A00B3BCE8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC3E1CF65A4A00B3BCE8 /* ButtonTableViewCell.swift */; };
+		4011AC411CF7952E00B3BCE8 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011AC401CF7952E00B3BCE8 /* TaskListTableViewController.swift */; };
 		68D78A261BD6C26500509A87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D78A251BD6C26500509A87 /* AppDelegate.swift */; };
 		68D78A2B1BD6C26500509A87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D78A291BD6C26500509A87 /* Main.storyboard */; };
 		68D78A2D1BD6C26500509A87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D78A2C1BD6C26500509A87 /* Assets.xcassets */; };
@@ -42,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4011AC2A1CF63BEA00B3BCE8 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 		4011AC2C1CF63CA600B3BCE8 /* TaskDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewController.swift; sourceTree = "<group>"; };
 		4011AC2E1CF63CE300B3BCE8 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		4011AC311CF63CFE00B3BCE8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		4011AC391CF6403600B3BCE8 /* TaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		4011AC3C1CF64FA400B3BCE8 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		4011AC3E1CF65A4A00B3BCE8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		4011AC401CF7952E00B3BCE8 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 		68D78A221BD6C26500509A87 /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D78A251BD6C26500509A87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68D78A2A1BD6C26500509A87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				4011AC3E1CF65A4A00B3BCE8 /* ButtonTableViewCell.swift */,
+				4011AC401CF7952E00B3BCE8 /* TaskListTableViewController.swift */,
 				4011AC2C1CF63CA600B3BCE8 /* TaskDetailTableViewController.swift */,
-				4011AC2A1CF63BEA00B3BCE8 /* TaskListTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -303,11 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4011AC2B1CF63BEA00B3BCE8 /* TaskListTableViewController.swift in Sources */,
 				4011AC2F1CF63CE300B3BCE8 /* Stack.swift in Sources */,
 				68D78A261BD6C26500509A87 /* AppDelegate.swift in Sources */,
 				4011AC2D1CF63CA600B3BCE8 /* TaskDetailTableViewController.swift in Sources */,
 				4011AC371CF63D7100B3BCE8 /* Task+CoreDataProperties.swift in Sources */,
+				4011AC411CF7952E00B3BCE8 /* TaskListTableViewController.swift in Sources */,
 				4011AC381CF63D7100B3BCE8 /* Task.swift in Sources */,
 				4011AC3A1CF6403600B3BCE8 /* TaskController.swift in Sources */,
 				4011AC3F1CF65A4A00B3BCE8 /* ButtonTableViewCell.swift in Sources */,

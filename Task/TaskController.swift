@@ -12,21 +12,21 @@ import CoreData
 class TaskController {
     
     static let sharedController = TaskController()
-    
-    var tasks: [Task] = []
+    let fetchedResultsController: NSFetchedResultsController
     
     init() {
-        self.tasks = fetchTasks()
+        let request = NSFetchRequest(entityName: "Task")
+        let isCompleteSortDescriptor = NSSortDescriptor(key: "isComplete", ascending: false)
+        let dueSortDescriptor = NSSortDescriptor(key: "due", ascending: false)
+        request.sortDescriptors = [isCompleteSortDescriptor, dueSortDescriptor]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: Stack.sharedStack.managedObjectContext, sectionNameKeyPath: "isComplete", cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error fetching content")
+        }
     }
-    
-//    var mockTasks: [Task] {
-//        if let task1 = Task(name: "Grocery List", notes: "Bananas, Bread, Milk", due: NSDate(timeIntervalSinceNow: NSTimeInterval(60*60*24*8))),
-//            let task2 = Task(name: "Homework", notes: nil, due: nil, isComplete: true) {
-//            return [task1, task2]
-//        } else {
-//            return []
-//        }
-//    }
     
     func addTask(name: String, notes: String?, due: NSDate?) {
         _ = Task(name: name, notes: notes, due: due)
@@ -41,10 +41,8 @@ class TaskController {
     }
     
     func removeTask(task: Task) {
-        if let moc = task.managedObjectContext {
-            moc.deleteObject(task)
-            saveToPersistentStore()
-        }
+        task.managedObjectContext?.deleteObject(task)
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {
@@ -54,20 +52,6 @@ class TaskController {
         } catch {
             print("The task could not be saved.")
         }
-    }
-    
-    func fetchTasks() -> [Task] {
-        let request = NSFetchRequest(entityName: "Task")
-        let moc = Stack.sharedStack.managedObjectContext
-        return (try? moc.executeFetchRequest(request)) as? [Task] ?? []
-    }
-    
-    var completedTasks: [Task] {
-        return tasks.filter({$0.isComplete.boolValue})
-    }
-    
-    var incompleteTasks: [Task] {
-        return tasks.filter({!$0.isComplete.boolValue})
     }
     
 }

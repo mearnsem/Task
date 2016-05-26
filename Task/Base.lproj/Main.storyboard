@@ -6,17 +6,17 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Task List Table View Controller-->
+        <!--Tasks-->
         <scene sceneID="Xh9-20-q9h">
             <objects>
                 <tableViewController id="2Yz-bd-1TA" customClass="TaskListTableViewController" customModule="Task" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bwt-3H-clY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="30" id="bwt-3H-clY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="eIN-Um-sei" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eIN-Um-sei" id="ZiN-IL-IX7">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -60,7 +60,7 @@
                             <outlet property="delegate" destination="2Yz-bd-1TA" id="8Mh-gi-x39"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="TcH-Qi-Zcz">
+                    <navigationItem key="navigationItem" title="Tasks" id="TcH-Qi-Zcz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hHd-V2-GXd">
                             <connections>
                                 <segue destination="Rdi-db-BKR" kind="show" identifier="toAddTask" id="Nk0-Hq-OQM"/>

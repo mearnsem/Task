@@ -9,17 +9,17 @@
 import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
-
     
     @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
-    weak var delegate: ButtonTableViewCellDelegate?
+    var delegate: ButtonTableViewCellDelegate?
     
     @IBAction func buttonTapped(sender: AnyObject) {
         if let delegate = delegate {
             delegate.buttonCellButtonTapped(self)
         }
+        
     }
     
     func updateButton(isComplete: Bool) {
