@@ -14,11 +14,6 @@ class TaskListTableViewController: UITableViewController, ButtonTableViewCellDel
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        tableView.reloadData()
-    }
-    
     func buttonCellButtonTapped(sender: ButtonTableViewCell) {
         TaskController.sharedController.saveToPersistentStore()
         tableView.reloadData()

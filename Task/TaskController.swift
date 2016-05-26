@@ -63,16 +63,10 @@ class TaskController {
     }
     
     var completedTasks: [Task] {
-        let moc = Stack.sharedStack.managedObjectContext
-        let request = NSFetchRequest(entityName: "Task")
-        let tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
         return tasks.filter({$0.isComplete.boolValue})
     }
     
     var incompleteTasks: [Task] {
-        let moc = Stack.sharedStack.managedObjectContext
-        let request = NSFetchRequest(entityName: "Task")
-        let tasks = (try? moc.executeFetchRequest(request)) as? [Task] ?? []
         return tasks.filter({!$0.isComplete.boolValue})
     }
     
