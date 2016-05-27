@@ -54,4 +54,9 @@ class TaskController {
         }
     }
     
+    func buttonToggleValueChange(task: Task) {
+        task.isComplete = !task.isComplete.boolValue
+        saveToPersistentStore()
+    }
+    
 }

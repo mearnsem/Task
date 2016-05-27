@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TaskListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TaskListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, ButtonTableViewCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class TaskListTableViewController: UITableViewController, NSFetchedResultsContro
 
         guard let task = TaskController.sharedController.fetchedResultsController.objectAtIndexPath(indexPath) as? Task else {return ButtonTableViewCell()}
         cell?.updateWithTask(task)
-
+        cell?.delegate = self
         return cell ?? ButtonTableViewCell()
     }
 
@@ -70,7 +70,15 @@ class TaskListTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
-    // MARK: - NSFetchedResultsControllerDelegate Conforming
+    // MARK: - ButtonTableViewCellDelegate
+    
+    func buttonCellButtonTapped(sender: ButtonTableViewCell) {
+        guard let task = sender.task else {return}
+        TaskController.sharedController.buttonToggleValueChange(task)
+        tableView.reloadData()
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -86,7 +94,8 @@ class TaskListTableViewController: UITableViewController, NSFetchedResultsContro
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
         case .Move:
             guard let indexPath = indexPath, newIndexPath = newIndexPath else {return}
-            tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
         case .Update:
             guard let indexPath = indexPath else {return}
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

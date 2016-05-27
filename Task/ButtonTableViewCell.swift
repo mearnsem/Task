@@ -13,13 +13,13 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var primaryLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    var task: Task?
     var delegate: ButtonTableViewCellDelegate?
     
     @IBAction func buttonTapped(sender: AnyObject) {
         if let delegate = delegate {
             delegate.buttonCellButtonTapped(self)
         }
-        
     }
     
     func updateButton(isComplete: Bool) {
@@ -35,6 +35,7 @@ extension ButtonTableViewCell {
     func updateWithTask(task: Task) {
         primaryLabel.text = task.name
         updateButton(task.isComplete.boolValue)
+        self.task = task
     }
 }
 
